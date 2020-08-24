@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Subscription-ui
+
+## Notes:
+
+- created by Utkarsh Pathak http://github.com/utkarshp64
+- MindBowser Assignment
+- Proxy-config is set for localhost:8000
+- used angular material for UI
 
 ## Available Scripts
 
