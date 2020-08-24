@@ -5,7 +5,7 @@
 - created by Utkarsh Pathak http://github.com/utkarshp64
 - MindBowser Assignment
 - Proxy-config is set for localhost:8000
-- used angular material for UI
+- used bootstrap v5-alpha for UI
 
 ## Available Scripts
 
