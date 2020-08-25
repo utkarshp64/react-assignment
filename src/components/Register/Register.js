@@ -117,7 +117,7 @@ const Register = () => {
 }
 
 const Loader = ({isLoad}) => {
-    console.log("Loader", isLoad)
+    // console.log("Loader", isLoad)
     return (
         <div>
             {isLoad && <div id="overlay" style={{display: "block"}}>

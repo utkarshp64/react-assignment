@@ -18,7 +18,7 @@ function App() {
         <Router>
             <div>
                 <Route path="/login" render={(pops) => <Login {...pops} loginHandler={onLogin}/>}/>
-                <Route path="/register" render={(pops) => <Register {...pops} isLogin={loggedIn}/>}/>
+                <Route path="/register" render={(pops) => <Register {...pops} isLogin={loggedIn} logoutHandler={onLogin}/>}/>
                 <Route path="/profile" render={(pops) => <Profile {...pops} isLogin={loggedIn}/>}/>
                 <Route path="/home" render={(pops) => <Home {...pops} isLogin={loggedIn} logoutHandler={onLogin}/>}/>
                 <Route exact path="/">

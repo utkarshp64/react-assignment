@@ -73,30 +73,31 @@ const Home = ({isLogin, logoutHandler}) => {
             ...prevState,
             [id]: value
         }))
-        console.log("handleChange", cardDetails);
+        // console.log("handleChange", cardDetails);
     }
 
-    const handleUnsubscribe = () => {
-        console.log("handleUnsubscribe")
+    const handlePayments = () => {
+        // console.log("handlePayments");
         setLoader(true);
-        axios.put("/api/subscriptions", {})
+        const data = cardDetails;
+        data["product_id"] = selectedProduct.id;
+        axios.post("/api/subscriptions", btoa(JSON.stringify(data)))
             .then(response => response.data.data)
             .then(value => {
+                console.log("Subscribe Product Response", value)
                 fetchSubscription().then(value1 => setSubscription(value1))
                 setLoader(false);
             })
             .catch(error => {
                 setLoader(false);
-                console.error("handlePayments Error", error.response)
-            })
+                console.error("Subscribe Product Error Response", error.response)
+            });
     }
 
-    const handlePayments = () => {
+    const handleUnsubscribe = () => {
+        // console.log("handleUnsubscribe");
         setLoader(true);
-        console.log("handlePayments", cardDetails)
-        const data = cardDetails;
-        data["product_id"] = selectedProduct.id;
-        axios.post("/api/subscriptions", data)
+        axios.put("/api/subscriptions", {})
             .then(response => response.data.data)
             .then(value => {
                 fetchSubscription().then(value1 => setSubscription(value1))
@@ -232,10 +233,10 @@ const Home = ({isLogin, logoutHandler}) => {
                                                             <option value="2022">2022</option>
                                                             <option value="2023">2023</option>
                                                             <option value="2024">2024</option>
-                                                            <option value="2016">2025</option>
-                                                            <option value="2017">2026</option>
-                                                            <option value="2018">2027</option>
-                                                            <option value="2019">2028</option>
+                                                            <option value="2025">2025</option>
+                                                            <option value="2026">2026</option>
+                                                            <option value="2027">2027</option>
+                                                            <option value="2028">2028</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -305,7 +306,7 @@ const SubscriptionList = ({nickname, product, price, status, onUnsubscribe}) => 
 }
 
 const Loader = ({isLoad}) => {
-    console.log("Loader", isLoad)
+    // console.log("Loader", isLoad)
     return (
         <div>
             {isLoad && <div id="overlay" style={{display: "block"}}>

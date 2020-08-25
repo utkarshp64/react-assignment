@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
 
-const Profile = () => {
+const Profile = ({logoutHandler}) => {
+
+    const history = useHistory();
+
+    const [loader, setLoader] = useState(false);
 
     const [user, setUser] = useState({
         firstname: null,
@@ -14,12 +18,15 @@ const Profile = () => {
     });
 
     useEffect(() => {
+        setLoader(true);
+
         async function fetchData() {
             const resp = await fetchProfile();
             setUser(resp);
         }
 
         fetchData();
+        setLoader(false);
     }, []);
 
     async function fetchProfile() {
@@ -27,6 +34,22 @@ const Profile = () => {
             .then(response => response.data.data)
             .catch(error => {
                 console.error("fetchProfile Error", error.response)
+            })
+    }
+
+    const handleLogout = () => {
+        setLoader(true);
+        axios.get("/api/login")
+            .then(response => response.data)
+            .then(value => {
+                setLoader(false);
+                console.log("logout", value)
+                history.push('/login');
+                logoutHandler(false);
+            })
+            .catch(error => {
+                setLoader(false);
+                console.error("logout Error", error.response)
             })
     }
 
@@ -39,7 +62,7 @@ const Profile = () => {
                         <Link type="button" className="btn btn-info btn-sm mr-1 ml-1" to={'/'}>Home</Link>
                     </div>
                     <div className="btn-group" role="group" aria-label="Third group">
-                        <button type="button" className="btn btn-danger btn-sm mr-1 ml-1">Logout</button>
+                        <a type="button" className="btn btn-danger btn-sm mr-1 ml-1" onClick={handleLogout}>Logout</a>
                     </div>
                 </div>
             </nav>
@@ -89,6 +112,21 @@ const Profile = () => {
                     </li>
                 </ul>
             </div>
+            <Loader isLoad={loader}/>
+        </div>
+    )
+}
+
+const Loader = ({isLoad}) => {
+    // console.log("Loader", isLoad)
+    return (
+        <div>
+            {isLoad && <div id="overlay" style={{display: "block"}}>
+                <div className="spinner"/>
+                <br/>
+                Loading...
+            </div>
+            }
         </div>
     )
 }
