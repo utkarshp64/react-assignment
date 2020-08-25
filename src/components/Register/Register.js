@@ -57,13 +57,13 @@ const Register = () => {
                                 <div>
                                     <form>
                                         <div className="form-group mt-2">
-                                            <label htmlFor="firstname">Password</label>
+                                            <label htmlFor="firstname">First Name</label>
                                             <input onChange={handleChange} type="text"
                                                    className="form-control" id="firstname"
                                                    placeholder="First Name"/>
                                         </div>
                                         <div className="form-group mt-2">
-                                            <label htmlFor="lastname">Password</label>
+                                            <label htmlFor="lastname">Last Name</label>
                                             <input onChange={handleChange} type="text"
                                                    className="form-control" id="lastname"
                                                    placeholder="Last Name"/>
@@ -84,25 +84,26 @@ const Register = () => {
                                         </div>
                                         <div className="form-group mt-2">
                                             <label htmlFor="address">Address</label>
-                                            <textarea className="form-control" id="address" rows="2"/>
+                                            <textarea onChange={handleChange} className="form-control" id="address"
+                                                      rows="2"/>
                                         </div>
                                         <div className="form-group mt-2">
-                                            <label htmlFor="dob">Password</label>
+                                            <label htmlFor="dob">DOB</label>
                                             <input onChange={handleChange} type="text"
                                                    className="form-control" id="dob"
                                                    placeholder="YYYY-MM-DD"/>
                                         </div>
                                         <div className="form-group mt-2">
-                                            <label htmlFor="company">Password</label>
+                                            <label htmlFor="company">Company</label>
                                             <input onChange={handleChange} type="text"
                                                    className="form-control" id="company"
                                                    placeholder="Company Name"/>
                                         </div>
-                                        <button type="submit" className="btn btn-primary mt-3"
+                                        <button type="button" className="btn btn-primary"
                                                 onClick={handleSignup}>Signup
                                         </button>
                                         <Link to="/login" className={"btn btn-link"}
-                                              style={{textDecoration: "none", paddingTop: "20px"}}>Already have
+                                              style={{textDecoration: "none"}}>Already have
                                             account?</Link>
                                     </form>
                                 </div>

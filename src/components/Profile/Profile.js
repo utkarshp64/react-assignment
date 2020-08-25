@@ -62,7 +62,7 @@ const Profile = ({logoutHandler}) => {
                         <Link type="button" className="btn btn-info btn-sm mr-1 ml-1" to={'/'}>Home</Link>
                     </div>
                     <div className="btn-group" role="group" aria-label="Third group">
-                        <a type="button" className="btn btn-danger btn-sm mr-1 ml-1" onClick={handleLogout}>Logout</a>
+                        <span className="btn btn-danger btn-sm mr-1 ml-1" onClick={handleLogout}>Logout</span>
                     </div>
                 </div>
             </nav>
